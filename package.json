@@ -1,0 +1,17 @@
+{
+  "name": "visiontrackr",
+  "version": "1.0.0",
+  "description": "VisionTrackr - A full-stack web application for tracking personal goals and visions",
+  "main": "index.js",
+  "scripts": {
+    "start:backend": "cd backend && npm run dev:js",
+    "start:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
