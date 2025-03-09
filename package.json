@@ -1,7 +1,7 @@
 {
-  "name": "visiontrackr",
+  "name": "visiontracker",
   "version": "1.0.0",
-  "description": "VisionTrackr - A full-stack web application for tracking personal goals and visions",
+  "description": "VisionTracker - A full-stack web application for tracking personal goals and visions",
   "main": "index.js",
   "scripts": {
     "start:backend": "cd backend && npm run dev:js",

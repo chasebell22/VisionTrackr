@@ -9,12 +9,16 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 
 // Page Components
+import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
 import ValuesPage from './pages/ValuesPage';
 import MissionPurposePage from './pages/MissionPurposePage';
 import VisionsPage from './pages/VisionsPage';
 import GoalsPage from './pages/GoalsPage';
 import DailyPlannerPage from './pages/DailyPlannerPage';
+import AboutPage from './pages/AboutPage';
+import PricingPage from './pages/PricingPage';
+import ResourcesPage from './pages/ResourcesPage';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
@@ -25,7 +29,22 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
+  }
+
+  return children;
+};
+
+// Public only route - redirects to dashboard if already authenticated
+const PublicOnlyRoute = ({ children }: { children: JSX.Element }) => {
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return <div className="flex items-center justify-center h-screen">Loading...</div>;
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" />;
   }
 
   return children;
@@ -34,13 +53,42 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
 function App() {
   return (
     <Routes>
+      {/* Public Home Page */}
+      <Route 
+        path="/" 
+        element={
+          <PublicOnlyRoute>
+            <HomePage />
+          </PublicOnlyRoute>
+        } 
+      />
+
+      {/* Public Information Pages */}
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/pricing" element={<PricingPage />} />
+      <Route path="/resources" element={<ResourcesPage />} />
+
       {/* Auth Routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route 
+        path="/login" 
+        element={
+          <PublicOnlyRoute>
+            <Login />
+          </PublicOnlyRoute>
+        } 
+      />
+      <Route 
+        path="/register" 
+        element={
+          <PublicOnlyRoute>
+            <Register />
+          </PublicOnlyRoute>
+        } 
+      />
 
       {/* Protected Routes */}
       <Route
-        path="/"
+        path="/dashboard"
         element={
           <ProtectedRoute>
             <Layout />

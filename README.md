@@ -1,6 +1,6 @@
-# VisionTrackr
+# VisionTracker
 
-VisionTrackr is a full-stack web application that helps users define their core values, mission, purpose, and layered visions (10-year, 3-year, 1-year), as well as set quarterly goals and daily tasks. It features progress tracking, gamification, and a modern, bold design targeting young men.
+VisionTracker is a full-stack web application that helps users define their core values, mission, purpose, and layered visions (10-year, 3-year, 1-year), as well as set quarterly goals and daily tasks. It features progress tracking, gamification, and a modern, bold design targeting young men.
 
 ## Project Overview
 
@@ -49,7 +49,7 @@ Each directory has its own README with specific setup instructions.
 3. Create a `.env` file with the following variables:
    ```
    PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/visiontrackr
+   MONGODB_URI=mongodb://localhost:27017/visiontracker
    JWT_SECRET=your_jwt_secret_key_here
    NODE_ENV=development
    ```
